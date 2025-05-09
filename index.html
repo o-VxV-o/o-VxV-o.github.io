@@ -1,33 +1,210 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>クイズ - 問題1</title>
-    <link rel="stylesheet" href="style.css">
+    <title>シンプル認証ページ</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #login-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #protected-content {
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #3367d6;
+        }
+        .logout-btn {
+            background: #f44336;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background: #d32f2f;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>クイズ</h1>
-        <div class="question">
-            <p>日本の首都は？</p>
+        <h1>保護されたコンテンツ</h1>
+        
+        <div id="login-form">
+            <h2>ログイン</h2>
+            <div class="form-group">
+                <label for="username">ユーザー名:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="button" id="login-btn">ログイン</button>
+            <p id="error-message" style="color: red; display: none;">認証に失敗しました。</p>
         </div>
-        <div class="choices">
-            <button onclick="checkAnswer(0)">東京</button>
-            <button onclick="checkAnswer(1)">大阪</button>
-            <button onclick="checkAnswer(2)">名古屋</button>
-            <button onclick="checkAnswer(3)">福岡</button>
+        
+        <div id="protected-content">
+            <h2>非公開コンテンツ</h2>
+            <p>これは認証されたユーザーのみが閲覧できるコンテンツです。</p>
+           
+            <a href="https://o-vxv-o.github.io/Test/1.%E5%B0%8F%E5%AD%A6%E7%94%9F/01.%E6%83%85%E5%A0%B1%E3%81%A8%E7%A4%BE%E4%BC%9A/01.%E3%83%A2%E3%83%A9%E3%83%AB%E3%81%A8%E9%A0%86%E6%B3%95/Q_01_01_03_03_02_1_1_1.html">モラルと順法(サンプル)</a><p><p>
+            <button class="logout-btn" id="logout-btn">ログアウト</button>
         </div>
     </div>
 
     <script>
-        function checkAnswer(selectedIndex) {
-            if (selectedIndex === 0) {
-                window.location.href = 'question1_correct.html';
-            } else {
-                window.location.href = 'question1_wrong.html';
+        // SHA-256によるハッシュ化関数
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // ハッシュ化されたパスワード（あらかじめ計算したもの）
+        // この例では "password123" をハッシュ化した値
+        const CORRECT_USER = 'IPASSKIDS';
+        const CORRECT_HASH = 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f';
+        
+        // 認証ステータスの確認
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+            
+            // ログインボタンのイベント
+            document.getElementById('login-btn').addEventListener('click', async function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (!username || !password) {
+                    showError('ユーザー名とパスワードを入力してください。');
+                    return;
+                }
+                
+                // パスワードをハッシュ化して比較
+                const hashedPassword = await sha256(password);
+                
+                if (username === CORRECT_USER && hashedPassword === CORRECT_HASH) {
+                    // 認証成功
+                    localStorage.setItem('auth_token', generateToken(username));
+                    showContent();
+                } else {
+                    // 認証失敗
+                    showError('認証に失敗しました。');
+                }
+            });
+            
+            // ログアウトボタンのイベント
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                localStorage.removeItem('auth_token');
+                checkAuthStatus();
+            });
+        });
+        
+        // エラーメッセージの表示
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            
+            // 3秒後にメッセージを消す
+            setTimeout(() => {
+                errorElement.style.display = 'none';
+            }, 3000);
+        }
+        
+        // トークン生成（簡易的な実装）
+        function generateToken(username) {
+            const now = new Date();
+            const expiry = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24時間後
+            const tokenData = {
+                username: username,
+                expires: expiry.getTime(),
+                random: Math.random().toString(36).substring(2)
+            };
+            return btoa(JSON.stringify(tokenData)); // Base64エンコード
+        }
+        
+        // トークンの検証
+        function validateToken(token) {
+            try {
+                const tokenData = JSON.parse(atob(token));
+                const now = new Date().getTime();
+                
+                // 有効期限チェック
+                if (tokenData.expires < now) {
+                    return false;
+                }
+                
+                return true;
+            } catch (e) {
+                return false;
             }
+        }
+        
+        // 認証状態の確認
+        function checkAuthStatus() {
+            const token = localStorage.getItem('auth_token');
+            
+            if (token && validateToken(token)) {
+                showContent();
+            } else {
+                hideContent();
+            }
+        }
+        
+        // コンテンツ表示
+        function showContent() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('protected-content').style.display = 'block';
+        }
+        
+        // コンテンツ非表示
+        function hideContent() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('protected-content').style.display = 'none';
         }
     </script>
 </body>
-</html> 
+</html>
