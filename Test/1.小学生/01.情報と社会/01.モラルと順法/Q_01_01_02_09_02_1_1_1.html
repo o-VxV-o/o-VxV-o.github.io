@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]1.小学生　　 [作成者]三浦 　　[問題種別]02.事例型 
+    </div>
+    <div class="quiz-header">
+        [番号]01_01_02_09_02_1_1_1 　　[分野]01.情報と社会 　　 　　 [分類]01.モラルと順法/02.法律/09.個人情報保護法
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              名前とメールアドレスを入れると賞品が当たるサイトをネットで見つけた。当たったら喜んでくれると思い、友達（ともだち）の名前で応募（おうぼ）した
+            </div>
+           
+            <img src="../../../pict/58.png" alt="" class="question-image">
+            <img src="../../../pict/150.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.個人（こじん）情報（じょうほう）保護法（ほごほう）違反（いはん）です。同意のない他人の情報（じょうほう）を提供（ていきょう）してはいけません。</div>
+            <div class="choice-text">2.当たったら友達（ともだち）も喜ぶはずなので、問題ありません。</div>
+            <div class="choice-text">3.名前とメールアドレス程度（ていど）なら問題ありません。</div>
+            <div class="choice-text">4.家族や友人の個人（こじん）情報（じょうほう）なら問題ありません。</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_01_01_02_09_02_1_1_1.html';
+            } else {
+                window.location.href = 'NG_01_01_02_09_02_1_1_1.html';
+            }
+        }
+    </script>
+</body>
+</html> 

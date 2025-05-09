@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]2.中学生　　 [作成者] 　　[問題種別]04.課題型 
+    </div>
+    <div class="quiz-header">
+        [番号]03_01_02_02_04_2_1_1 　　[分野]03.問題と解決 　　 　　 [分類]01.論理的思考/02.構造的把握/02.接続詞問題
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              以下で、文の構造が他と異なるものはどれでしょうか？
+            </div>
+           
+            <img src="../../../pict/.png" alt="" class="question-image">
+            <img src="../../../pict/.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.汗をかいたので、水分を補給しないと</div>
+            <div class="choice-text">2.雨が降ったら、迎えに来て</div>
+            <div class="choice-text">3.あの頃に戻れるなら、やり直したい</div>
+            <div class="choice-text">4.熱があるなら、水分を補給しないと</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_03_01_02_02_04_2_1_1.html';
+            } else {
+                window.location.href = 'NG_03_01_02_02_04_2_1_1.html';
+            }
+        }
+    </script>
+</body>
+</html> 

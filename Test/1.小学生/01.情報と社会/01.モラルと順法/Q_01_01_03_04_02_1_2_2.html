@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]1.小学生　　 [作成者]三浦 　　[問題種別]02.事例型 
+    </div>
+    <div class="quiz-header">
+        [番号]01_01_03_04_02_1_2_2 　　[分野]01.情報と社会 　　 　　 [分類]01.モラルと順法/03.不正行為/04.人工知能の不正利用
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              課題の読書感想文を書くのが面倒（めんどう）だったので、AIに作らせて提出（ていしゅつ）した
+            </div>
+           
+            <img src="../../../pict/68.png" alt="" class="question-image">
+            <img src="../../../pict/19.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.自分で創作（そうさく）することが求められています。他（ほか）のものを流用してはいけません。</div>
+            <div class="choice-text">2.「カンニング」と同等の不正行為（こうい）です。</div>
+            <div class="choice-text">3.個人的（こじんてき）な利用（私的（してき）使用）に当たるので、著作権（ちょさくけん）侵害（しんがい）にはなりません。</div>
+            <div class="choice-text">4.引用に当たるので、問題ありません。</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_01_01_03_04_02_1_2_2.html';
+            } else {
+                window.location.href = 'NG_01_01_03_04_02_1_2_2.html';
+            }
+        }
+    </script>
+</body>
+</html> 

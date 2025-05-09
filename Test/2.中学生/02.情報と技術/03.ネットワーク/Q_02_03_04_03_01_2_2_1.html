@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]2.中学生　　 [作成者]AI 　　[問題種別]01.知識型 
+    </div>
+    <div class="quiz-header">
+        [番号]02_03_04_03_01_2_2_1 　　[分野]02.情報と技術 　　 　　 [分類]03.ネットワーク/04.通信方式/03.長距離無線通信
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              Beyond5G（ビヨンドファイブジー）とは？
+            </div>
+           
+            <img src="../../../pict/.png" alt="" class="question-image">
+            <img src="../../../pict/.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.5Gの次の世代の通信技術</div>
+            <div class="choice-text">2.音楽のストリーミングサービス</div>
+            <div class="choice-text">3.映画の配信サービス</div>
+            <div class="choice-text">4.ゲームのプラットフォーム</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_02_03_04_03_01_2_2_1.html';
+            } else {
+                window.location.href = 'NG_02_03_04_03_01_2_2_1.html';
+            }
+        }
+    </script>
+</body>
+</html> 

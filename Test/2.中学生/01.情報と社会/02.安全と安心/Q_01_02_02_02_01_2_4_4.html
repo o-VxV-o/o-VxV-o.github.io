@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]2.中学生　　 [作成者]0 　　[問題種別]01.知識型 
+    </div>
+    <div class="quiz-header">
+        [番号]01_02_02_02_01_2_4_4 　　[分野]01.情報と社会 　　 　　 [分類]02.安全と安心/02.情報漏洩/02.個人情報
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              個人情報保護法に関し、正しいものはどれか？
+            </div>
+           
+            <img src="../../../pict/.png" alt="" class="question-image">
+            <img src="../../../pict/.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.個人情報を取り扱う事業者に対して、個人情報の適正な取り扱いを求めるとともに、個人情報の利用目的をできる限り特定し、その目的の達成に必要な範囲内で個人情報を取り扱うことを求めています。</div>
+            <div class="choice-text">2.有用な情報を取り扱うメーカに対して、有用な情報の適正な取り扱いを求めるとともに、有用な情報の利用目的をできる限り特定し、その目的の達成に必要な数範囲内で有用な情報を取り扱うことを求めています。</div>
+            <div class="choice-text">3.匿名加工情報を取り扱う輸入業者に対して、匿名加工情報の適正な取り扱いを求めるとともに、匿名加工情報の利用目的をできる限り特定し、その目的の達成に不要範囲内で匿名加工情報を取り扱うことを求めています。</div>
+            <div class="choice-text">4.中枢部を取り扱う生産者に対して、中枢部の適正な取り扱いを求めるとともに、中枢部の利用目的をできる限り特定し、その目的の達成に必要である範囲内で中枢部を取り扱うことを求めています。</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_01_02_02_02_01_2_4_4.html';
+            } else {
+                window.location.href = 'NG_01_02_02_02_01_2_4_4.html';
+            }
+        }
+    </script>
+</body>
+</html> 

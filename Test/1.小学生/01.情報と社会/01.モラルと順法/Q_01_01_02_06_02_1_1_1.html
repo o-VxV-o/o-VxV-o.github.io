@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]1.小学生　　 [作成者]三浦 　　[問題種別]02.事例型 
+    </div>
+    <div class="quiz-header">
+        [番号]01_01_02_06_02_1_1_1 　　[分野]01.情報と社会 　　 　　 [分類]01.モラルと順法/02.法律/06.賭博罪
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              オンラインカジノのチップがタダで貰（もら）えた。
+            </div>
+           
+            <img src="../../../pict/58.png" alt="" class="question-image">
+            <img src="../../../pict/163.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.賭博（とばく）サイト（オンラインカジノ）の利用は、犯罪（はんざい）です。</div>
+            <div class="choice-text">2.逮捕（たいほ）される場合があります。</div>
+            <div class="choice-text">3.初めはタダでも大金を失う場合もあります。</div>
+            <div class="choice-text">4.海外のサイトなら利用しても問題ありません。</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_01_01_02_06_02_1_1_1.html';
+            } else {
+                window.location.href = 'NG_01_01_02_06_02_1_1_1.html';
+            }
+        }
+    </script>
+</body>
+</html> 

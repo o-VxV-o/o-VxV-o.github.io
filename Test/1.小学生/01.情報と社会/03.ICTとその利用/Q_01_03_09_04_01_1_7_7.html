@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="quiz-header">
+        [対象者]1.小学生　　 [作成者]0 　　[問題種別]01.知識型 
+    </div>
+    <div class="quiz-header">
+        [番号]01_03_09_04_01_1_7_7 　　[分野]01.情報と社会 　　 　　 [分類]03.ICTとその利用/09.産業/04.商業
+    </div>
+
+
+    <div class="container">
+        <div class="question">
+
+            <div class="question-text">
+              パソコンや携帯電話から、２４時間いつでも好きなときに買い物ができるので、忙しい人にもおすすめを何というか？
+            </div>
+           
+            <img src="../../../pict/.png" alt="" class="question-image">
+            <img src="../../../pict/.png" alt="" class="question-image">
+            
+        </div>
+        <div class="choices">
+            <div class="choice-text">1.インターネットショッピング</div>
+            <div class="choice-text">2.ハニーネットショッピング</div>
+            <div class="choice-text">3.イントラネットショッピング</div>
+            <div class="choice-text">4.スループットショッピング</div>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="checkAnswer(0)">1</button>
+            <button class="number-button" onclick="checkAnswer(1)">2</button>
+            <button class="number-button" onclick="checkAnswer(2)">3</button>
+            <button class="number-button" onclick="checkAnswer(3)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === 0) {  // 1番が正解
+                window.location.href = 'OK_01_03_09_04_01_1_7_7.html';
+            } else {
+                window.location.href = 'NG_01_03_09_04_01_1_7_7.html';
+            }
+        }
+    </script>
+</body>
+</html> 
